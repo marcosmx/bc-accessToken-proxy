@@ -1,7 +1,11 @@
 const express = require('express')
 const token = require('./token')
 const app = express()
-const port = 8080
+let port = process.env.PORT;
+
+if (port == null || port == "") {
+  port = 8080;
+}
 
 app.use(express.json())
 app.post('/proxy/accessToken', (req, res) => {
